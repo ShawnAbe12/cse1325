@@ -1,7 +1,7 @@
 public class Coin {
     
-    Denomination denomination;
-    int year;
+    private Denomination denomination;
+    private int year;
     public Coin(Denomination denomination, int year){
         this.denomination = denomination;
         this.year = year;
