@@ -6,19 +6,24 @@ public class Purse {
       public static void main(String[] args) { 
       double totalSaved = 0;
       // Scanner scanner = new Scanner();
-      Denomination myVar1 = Denomination.PENNY; 
-      Denomination myVar2 = Denomination.NICKEL; 
-      Denomination myVar3 = Denomination.DIME; 
-      Denomination myVar4 = Denomination.QUARTER; 
-      Denomination myVar5 = Denomination.QUARTER; 
-      
-      Coin[] coinArray = new Coin[5];
+      // Denomination myVar1 = Denomination.PENNY; 
+      // Denomination myVar2 = Denomination.NICKEL; 
+      // Denomination myVar3 = Denomination.DIME; 
+      // Denomination myVar4 = Denomination.QUARTER; 
+      // Denomination myVar5 = Denomination.QUARTER; 
 
-      coinArray[0] = new Coin(myVar5, 2011);
-      coinArray[1] = new Coin(myVar1, 1908);
-      coinArray[2] = new Coin(myVar2, 1928);
-      coinArray[3] = new Coin(myVar3, 2004);
-      coinArray[4]= new Coin(myVar4, 2030);
+
+      Denomination[] denominationsArray = {Denomination.PENNY,Denomination.NICKEL,Denomination.DIME,Denomination.QUARTER,Denomination.QUARTER};
+      Coin[] coinArray = new Coin[5];
+      int[] yearArray = {1908,1928,2004,2021,2011};
+
+      int count = 0;
+      for(Denomination denom : denominationsArray){
+        coinArray[count] = new Coin(denom, yearArray[count]);
+        count++;
+
+      }
+      
 
       // coinArray[0]= new Coin(myVar5, 2021);
       int minYear = coinArray[0].getYear();
