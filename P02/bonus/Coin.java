@@ -13,5 +13,10 @@ public class Coin {
     public int getYear(){
         return year;
     }
+
+    @Override
+    public String toString(){
+        return "" + this.getYear() + "  " + this.denomination.toString(); 
+    }
     
 }
