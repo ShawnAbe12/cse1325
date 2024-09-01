@@ -17,6 +17,7 @@ public class Purse {
       int minYear = coinArray[0].getYear();
       int maxYear = coinArray[0].getYear();
       for(Coin coin:coinArray){
+        System.out.println(coin.toString());
         if(minYear > coin.getYear()){
           minYear = coin.getYear();
         }
