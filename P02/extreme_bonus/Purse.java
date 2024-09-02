@@ -1,12 +1,14 @@
 // import java.util.Scanner;
+import java.lang.Math;
 public class Purse { 
       public static void main(String[] args) { 
       double totalSaved = 0;
+      double weightGrams = 0;
       // Scanner scanner = new Scanner();
 
-      Denomination[] denominationsArray = {Denomination.PENNY,Denomination.NICKEL,Denomination.DIME,Denomination.QUARTER,Denomination.QUARTER};
+      Denomination[] denominationsArray = {Denomination.PENNY,Denomination.NICKEL,Denomination.DIME,Denomination.QUARTER,Denomination.PENNY};
       Coin[] coinArray = new Coin[5];
-      int[] yearArray = {1908,1928,2004,2021,2011};
+      int[] yearArray = {1909,1939,1946,1964,2014};
 
       int count = 0;
       for(Denomination denom : denominationsArray){
@@ -17,17 +19,21 @@ public class Purse {
       int minYear = coinArray[0].getYear();
       int maxYear = coinArray[0].getYear();
       for(Coin coin:coinArray){
-        System.out.println(coin.toString() + " " + coin.getWeight());
+        System.out.println(coin.toString());
         if(minYear > coin.getYear()){
           minYear = coin.getYear();
         }
         if(maxYear < coin.getYear()){
           maxYear = coin.getYear();
         }
-
+        weightGrams += coin.getWeight();
         totalSaved += coin.getValue();
       }
-      System.out.println("You have $ "+totalSaved + " in coins between " + minYear +" and "+ maxYear);
+
+      String weight = String.format("%.3f", weightGrams);
+      String saved = String.format("%.2f", totalSaved);
+
+      System.out.println("You have $ "+saved + " in coins between " + minYear +" and "+ maxYear + " weighing " + weight + " grams");
       
     } 
   }
