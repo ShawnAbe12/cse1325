@@ -5,9 +5,16 @@ public class Student{
     private Account account = new Account();
 
     public Student(String name,int id,String email){
-        if(email.endsWith("@uta.edu") != true && email.endsWith("mavs.uta.edu") != true ){
-            throw new IllegalArgumentException("\"Non-UTA email address: "+ email);
+        try {
+            if(email.endsWith("@uta.edu") != true && email.endsWith("mavs.uta.edu") != true ){
+                throw new IllegalArgumentException("\"Non-UTA email address: "+ email);
+            }
         }
+        catch(Exception e) {
+            System.err.println(e.getMessage());
+            System.exit(-1);    
+        }
+        
         this.name = name;
         this.id = id; 
         this.email = email;
@@ -18,6 +25,6 @@ public class Student{
 
     @Override
     public String toString(){
-        return "\""+name + "("+id+","+email+","+account.getAccountNumber()+")\"";
+        return "\""+name + " ("+id+","+email+",Account Number #"+account.getAccountNumber()+")\"";
     }
 }
