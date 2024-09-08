@@ -2,19 +2,22 @@ public class Student{
     private String name;
     private int id;
     private String email;
-    private Account account;
+    private Account account = new Account();
 
     public Student(String name,int id,String email){
+        if(email.endsWith("@uta.edu") != true && email.endsWith("mavs.uta.edu") != true ){
+            throw new IllegalArgumentException("\"Non-UTA email address: "+ email);
+        }
         this.name = name;
         this.id = id; 
         this.email = email;
     }
     public String requestMedia(Media media){
-        return media.toString();
+        return account.play(media);
     }
 
     @Override
     public String toString(){
-        return "";
+        return "\""+name + "("+id+","+email+","+account.getAccountNumber()+")\"";
     }
 }
