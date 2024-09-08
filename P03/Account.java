@@ -1,17 +1,17 @@
 public class Account {
     private int accountNumber;
-    private int nextAccountNumber;
+    private static int nextAccountNumber = 1;
     
     public Account(){
-        this.accountNumber = 0;
-        this.nextAccountNumber = 0;
+        this.accountNumber = nextAccountNumber;
+        nextAccountNumber++;
 
     }
     public int getAccountNumber(){
         return accountNumber;
     }
     public String play(Media media){
-        return media.toString();
+        return "Playing " + media.toString();
     }
     
     
