@@ -16,7 +16,7 @@ public class Media{
             new URL(url); 
             return true; 
         } catch (MalformedURLException e) {
-            return false; 
+            throw new RuntimeException("NOT A VALID URL");
         }
     }
 
