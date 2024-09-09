@@ -3,6 +3,8 @@ public class TestMedia{
         String title = "The Little Shop of Horrors";
         String url = "https://publicdomainmovie.net/movie/the-little-shop-of-horrors-0";
         Media media = new Media(title, url);
+       
+        System.out.println(media.isValidURL(url));
         //Check to see if the media to string starts with title and ends with url enclosed inside ()
         if(media.toString().startsWith("\""+title) != true || media.toString().endsWith("("+url+")\"") != true){
             System.out.println("FAIL");
