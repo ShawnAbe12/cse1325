@@ -2,7 +2,8 @@ package customer;
 
 import product.Media;
 
-public class Unlimited{
+class Unlimited extends Account{
+    @Override
     public String play(Media media){
         return media.toString();
     }
