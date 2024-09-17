@@ -2,10 +2,10 @@ package customer;
 
 import product.Media;
 
-class Alacarte extends Account{
+public class Alacarte extends Account{
     private int pointsRemaining;
     public void buyPoints(int points){
-        System.out.println("here");
+        pointsRemaining +=points;
     }
     public int getPointsRemaining(){
         return pointsRemaining;
@@ -14,9 +14,10 @@ class Alacarte extends Account{
     public String play(Media media){
         int required = media.getPoint() - pointsRemaining;
         if(media.getPoint() > pointsRemaining){
-            return "Buy more points: Requires: " + required + "Points \nYou currently have: " + pointsRemaining +" Points\n";
+            return "Buy more points: Requires: " + required + " Points \nYou currently have: " + pointsRemaining +" Points\n";
         }
         else{
+            pointsRemaining -= media.getPoint();
             return "Playing " + media.toString();
         }
         

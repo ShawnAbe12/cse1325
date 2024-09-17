@@ -2,6 +2,7 @@ package customer;
 
 import customer.Unlimited;
 import customer.Alacarte;
+
 import product.Media;
 
 public class Student{
@@ -28,6 +29,9 @@ public class Student{
     }
     public String requestMedia(Media media){
         return account.play(media);
+    }
+    public Account getAccount(){
+        return account;
     }
 
     @Override

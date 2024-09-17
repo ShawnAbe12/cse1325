@@ -14,7 +14,7 @@ public class TestMedia{
         String[] arr2 = {"hello.world", "htt://badurl.com", "flub://badurl.com"};
 
 
-        if(media.toString().startsWith(title) != true || media.toString().endsWith("("+url+")") != true){
+        if(media.toString().startsWith(title) != true || media.toString().endsWith(" (" + url + ", " + points +" points)") != true){
             System.out.println("FAIL");
             System.out.println("Expected outcome:" + title + " (" + url + ")");
             System.out.println(media.toString());

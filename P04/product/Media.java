@@ -54,6 +54,6 @@ public class Media {
      */
     @Override
     public String toString() {
-        return title + " (" + url + ") Points Remaining: " + points;
+        return title + " (" + url + ", " + points +" points)";
     }
 }
