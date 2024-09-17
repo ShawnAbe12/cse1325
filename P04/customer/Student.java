@@ -1,6 +1,7 @@
 package customer;
 
-import customer.Account;
+import customer.Unlimited;
+import customer.Alacarte;
 import product.Media;
 
 public class Student{
@@ -9,16 +10,8 @@ public class Student{
     private String email;
     private Account account;
 
-    public Student(String name,int id,String email){
-        // try {
-        //     if(email.endsWith("@uta.edu") != true && email.endsWith("mavs.uta.edu") != true ){
-        //         throw new IllegalArgumentException("\"Non-UTA email address: "+ email);
-        //     }
-        // }
-        // catch(Exception e) {
-        //     System.err.println(e.getMessage());
-        //     System.exit(-1);    
-        // }
+    public Student(String name,int id,String email, Boolean unlimited){
+
         if(email.endsWith("@uta.edu") != true && email.endsWith("mavs.uta.edu") != true ){
             throw new IllegalArgumentException("\"Non-UTA email address: "+ email);
         }
@@ -26,7 +19,12 @@ public class Student{
         this.name = name;
         this.id = id; 
         this.email = email;
-        this.account = new Account();
+        if(unlimited){
+            this.account = new Unlimited();
+        }
+        else{
+            this.account = new Alacarte();
+        }
     }
     public String requestMedia(Media media){
         return account.play(media);

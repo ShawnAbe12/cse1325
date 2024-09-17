@@ -1,6 +1,6 @@
 package test;
 
-import customer.Account;
+// import customer.Account;
 import customer.Student;
 import product.Media;
 
@@ -11,6 +11,7 @@ public class TestStudent{
         String name = "Shawn";
         int id = 10090564;
         String email = "sxa0449@mavs.uta.edu";
+        boolean unlimited = true;
         int numOfFails = 0;
 
         
@@ -24,12 +25,12 @@ public class TestStudent{
 
         String correctMediaString = "Playing " + media.toString();
         
-        Student stu = new Student(name, id, email);
+        Student stu = new Student(name, id, email,unlimited);
         
         
         // Student stu = new Student(name, id, email);
         try {
-            Student stu1 = new Student(name, id, email + "23");
+            Student stu1 = new Student(name, id, email + "23",unlimited);
         } 
         catch (Exception e) {
             if(!e.getMessage().equals(correctExpression)){
@@ -38,8 +39,8 @@ public class TestStudent{
                 System.out.println("Expected Outcome: \n"+correctExpression +"\n" + "Actual Outcome: \n" +e.getMessage());
             }
         }
-        int nextAccountNumber = new Account().getAccountNumber()-1;
-        String correctString = "\""+name + " ("+id+","+email+",Account Number #"+nextAccountNumber+")\"";
+
+        String correctString = "\""+name + " ("+id+","+email+",Account Number #1)\"";
 
         if(stu.toString().equals(correctString) != true){
             System.out.println("FAIL");
