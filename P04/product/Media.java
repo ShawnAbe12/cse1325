@@ -1,9 +1,15 @@
 package product;
 
 public class Media {
-    public Media(String title, String url) {
+    private String title;
+    private String url;
+    private int points;
+
+
+    public Media(String title, String url,int points) {
         this.title = title;
         this.url = url;
+        this.points = points;
 
         try {
             new java.net.URI(url).toURL();
@@ -14,8 +20,6 @@ public class Media {
     }
     @Override
     public String toString() {
-        return title + " (" + url + ")";
+        return title + " (" + url + ") Points Remaining: " + points;
     }
-    private String title;
-    private String url;
 }

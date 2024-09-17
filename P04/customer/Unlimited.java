@@ -4,6 +4,6 @@ import product.Media;
 
 public class Unlimited{
     public String play(Media media){
-        return "";
+        return media.toString();
     }
 }
