@@ -1,6 +1,8 @@
-// package mdi;
+package mdi;
 
 import moes.Moes;
+import customer.Student;
+
 import java.util.Scanner;
 
 public class Main{
@@ -15,7 +17,7 @@ public class Main{
         String studentName = in.nextLine();
 
         System.out.println("Student ID? ");
-        String studentID = in.nextLine();
+        int studentID = in.nextInt();
 
         System.out.println("Student email? ");
         String studentEmail = in.nextLine();
@@ -26,10 +28,10 @@ public class Main{
 
         switch(studentType){
             case("a"):
-                type = true;
+                type = false;
                 break;
             case("u"):
-                type = false;
+                type = true;
                 break;
         }
         Student student = new Student(studentName,studentID,studentEmail,type);
@@ -40,23 +42,23 @@ public class Main{
     }
 
 
-    private void addMedia(){
-        continue;
-    }
-    private void playMedia(){
-        continue;
-    } 
-    private void listMedia(){
-        continue;
-    }
+    // private void addMedia(){
+    //     continue;
+    // }
+    // private void playMedia(){
+    //     continue;
+    // } 
+    // private void listMedia(){
+    //     continue;
+    // }
 
 
-    private void listAvailablePoints(){
-        continue;
-    }
-    private void buyPoints(){
-        continue;
-    }
+    // private void listAvailablePoints(){
+    //     continue;
+    // }
+    // private void buyPoints(){
+    //     continue;
+    // }
 
     public static void main(String[] args){
         System.out.println("Hello World");
