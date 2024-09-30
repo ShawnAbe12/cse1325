@@ -1,6 +1,7 @@
 package mdi;
 
 import moes.Moes;
+import product.Media;
 import customer.Student;
 
 import java.util.Scanner;
@@ -42,22 +43,52 @@ public class Main{
     }
 
 
-    // private void addMedia(){
-    //     continue;
-    // }
-    // private void playMedia(){
-    //     continue;
-    // } 
-    // private void listMedia(){
-    //     continue;
-    // }
+    private void addMedia(){
+        Scanner in = new Scanner(System.in);
+
+        System.out.println("Title? ");
+        String mediaTitle = in.nextLine();
+
+        System.out.println("URL? ");
+        String mediaURL = in.nextLine();
+
+        System.out.println("Points? ");
+        int mediaPoints = in.nextInt();
+
+        moes.addMedia(new Media(mediaTitle, mediaURL, mediaPoints));
 
 
-    // private void listAvailablePoints(){
-    //     continue;
-    // }
+    }
+    private void playMedia(){
+        Scanner in = new Scanner(System.in);
+
+        System.out.println("Student Number? ");
+        int studentNumber = in.nextInt();
+
+        System.out.println("Media Number? ");
+        int mediaNumber = in.nextInt();
+
+        System.out.println(moes.playMedia(studentNumber, mediaNumber));
+
+
+    
+    } 
+    private void listMedia(){
+        System.out.println(moes.getMediaList());
+    }
+
+
+    private void listAvailablePoints(){
+        Scanner in = new Scanner(System.in);
+
+        System.out.println("Student Number? ");
+        int studentNumber = in.nextInt();
+
+        System.out.println(moes.getPoints(studentNumber));
+
+    }
     // private void buyPoints(){
-    //     continue;
+
     // }
 
     public static void main(String[] args){
