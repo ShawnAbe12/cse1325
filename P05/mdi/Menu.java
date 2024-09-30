@@ -28,10 +28,12 @@ package mdi;
 
 import java.util.List;
 import java.util.ArrayList;
+import java.util.Scanner;
 
 // This class manages the entire menu and dispatch table
 class Menu {
     private List<MenuItem> items = new ArrayList<>();
+
 
     public void addMenuItem(MenuItem item) {
         items.add(item);
@@ -39,6 +41,7 @@ class Menu {
 
     public static String getString(String prompt, String cancelInput, String defaultInput) {
         String s = null;
+        Scanner in = new Scanner(System.in);
         while(true) {
             try {
                 System.out.print(prompt);
@@ -69,6 +72,21 @@ class Menu {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
+        sb.append(" ___________________\r\n" + //
+                        " | _______________ |\r\n" + //
+                        " | |XXXXXXXXXXXXX| |\r\n" + //
+                        " | |XXXXXXXXXXXXX| |\r\n" + //
+                        " | |    MOES     | |\r\n" + //
+                        " | |XXXXXXXXXXXXX| |\r\n" + //
+                        " | |XXXXXXXXXXXXX| |\r\n" + //
+                        " |_________________|\r\n" + //
+                        "     _[_______]_\r\n" + //
+                        " ___[___________]___\r\n" + //
+                        "|         [_____] []|__\r\n" + //
+                        "|         [_____] []|  \\__\r\n" + //
+                        "L___________________J     \\ \\___\\/\r\n" + //
+                        " ___________________      /\\\r\n" + //
+                        "/###################\\    (__)\n");
         for(int i=0 ; i<items.size() ; ++i)
             sb.append(" " + i + "] " + items.get(i) + "\n");
        return sb.toString();

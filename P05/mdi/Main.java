@@ -20,6 +20,8 @@ public class Main{
         System.out.println("Student ID? ");
         int studentID = in.nextInt();
 
+        in.nextLine();
+
         System.out.println("Student email? ");
         String studentEmail = in.nextLine();
 
@@ -105,11 +107,51 @@ public class Main{
             System.out.println("Not a Valid Purchase Ammount");
         }
         else{
-            System.out.printn(moes.buyPoints(studentNumber, pointsPurchased));
+            System.out.println(moes.buyPoints(studentNumber, pointsPurchased));
         }
     }
 
-    public static void main(String[] args){
-        System.out.println("Hello World");
+    public Main(){
+
+        output = "";
+        running = true;
+
+        menu.addMenuItem(new MenuItem("Exit",                    () -> endApp()));
+
+        menu.addMenuItem(new MenuItem("Play media",              () -> playMedia()));
+        menu.addMenuItem(new MenuItem("List media",              () -> listMedia()));
+        menu.addMenuItem(new MenuItem("List available points",   () -> listAvailablePoints()));
+        menu.addMenuItem(new MenuItem("Buy points",              () -> buyPoints()));
+        menu.addMenuItem(new MenuItem("Add media",               () -> addMedia()));
+
+        menu.addMenuItem(new MenuItem("List all students",       () -> listStudents()));
+        menu.addMenuItem(new MenuItem("Add a student",           () ->addStudent()));
+
+        
+
     }
+    private void mdi(){
+        Scanner in = new Scanner(System.in);
+        while(running){
+            System.out.println(menu.toString());
+            System.out.println("Selection: ");
+            int selection = in.nextInt();
+            if(selection >= 0 && selection <= 7){
+                menu.run(selection);
+            }
+            else{
+                System.out.println("Not a Valid Number");
+            }
+        }
+
+    }
+    private void endApp(){
+        running = false;
+    }
+
+    public static void main(String[] args){
+        Main main = new Main();
+        main.mdi();
+    }
+    
 }
