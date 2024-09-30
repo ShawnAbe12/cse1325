@@ -87,9 +87,27 @@ public class Main{
         System.out.println(moes.getPoints(studentNumber));
 
     }
-    // private void buyPoints(){
+    private void buyPoints(){
+    //         Method buyPoints() will collect a student index from the user, get their current points total, then ask the
+    //         user how many additional points to buy. Perform data validation on the result - no purchasing negative points!
+    //         Otherwise, use Moes' buyPoints method to buy the points, printing the result
 
-    // }
+        Scanner in = new Scanner(System.in);
+
+        System.out.println("Student Number? ");
+        int studentNumber = in.nextInt();
+        moes.getPoints(studentNumber);
+
+        System.out.println("How many points would you like to purchase?");
+        int pointsPurchased = in.nextInt();
+
+        if(pointsPurchased < 0){
+            System.out.println("Not a Valid Purchase Ammount");
+        }
+        else{
+            System.out.printn(moes.buyPoints(studentNumber, pointsPurchased));
+        }
+    }
 
     public static void main(String[] args){
         System.out.println("Hello World");
