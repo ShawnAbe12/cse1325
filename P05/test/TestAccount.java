@@ -1,11 +1,11 @@
 package test;
 
-import customer.Account;
+import customer.Unlimited;
 
 public class TestAccount{
     public static void main(String[] args){
-        Account acc1 = new Account();
-        Account acc2 = new Account();
+        Unlimited acc1 = new Unlimited();
+        Unlimited acc2 = new Unlimited();
         if(acc1.getAccountNumber() !=1 || acc2.getAccountNumber() !=2)
         {
             System.out.println("FAIL");
