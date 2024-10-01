@@ -72,6 +72,7 @@ class Menu {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
+        // Website: https://www.asciiart.eu/computers/computers
         sb.append(" ___________________\r\n" + //
                         " | _______________ |\r\n" + //
                         " | |XXXXXXXXXXXXX| |\r\n" + //
@@ -87,8 +88,9 @@ class Menu {
                         "L___________________J     \\ \\___\\/\r\n" + //
                         " ___________________      /\\\r\n" + //
                         "/###################\\    (__)\n");
+
         for(int i=0 ; i<items.size() ; ++i)
-            sb.append(" " + i + "] " + items.get(i) + "\n");
+            sb.append(" " + i + "] " + items.get(i).toString() + "\n");
        return sb.toString();
     }
 

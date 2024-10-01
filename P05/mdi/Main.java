@@ -41,7 +41,7 @@ public class Main{
         moes.addStudent(student);
     }
     private void listStudents(){
-        System.out.println(moes.getStudentList());
+        output = moes.getStudentList();
     }
 
 
@@ -70,13 +70,13 @@ public class Main{
         System.out.println("Media Number? ");
         int mediaNumber = in.nextInt();
 
-        System.out.println(moes.playMedia(studentNumber, mediaNumber));
+        output = moes.playMedia(studentNumber, mediaNumber);
 
 
     
     } 
     private void listMedia(){
-        System.out.println(moes.getMediaList());
+        output = moes.getMediaList();
     }
 
 
@@ -86,7 +86,7 @@ public class Main{
         System.out.println("Student Number? ");
         int studentNumber = in.nextInt();
 
-        System.out.println(moes.getPoints(studentNumber));
+        output = String.valueOf(moes.getPoints(studentNumber));
 
     }
     private void buyPoints(){
@@ -104,10 +104,10 @@ public class Main{
         int pointsPurchased = in.nextInt();
 
         if(pointsPurchased < 0){
-            System.out.println("Not a Valid Purchase Ammount");
+            output = "Not a Valid Purchase Ammount";
         }
         else{
-            System.out.println(moes.buyPoints(studentNumber, pointsPurchased));
+            output = moes.buyPoints(studentNumber, pointsPurchased);
         }
     }
 
@@ -116,16 +116,16 @@ public class Main{
         output = "";
         running = true;
 
-        menu.addMenuItem(new MenuItem("Exit",                    () -> endApp()));
+        menu.addMenuItem(new MenuItem("Exit\n",                    () -> endApp()));
 
         menu.addMenuItem(new MenuItem("Play media",              () -> playMedia()));
         menu.addMenuItem(new MenuItem("List media",              () -> listMedia()));
         menu.addMenuItem(new MenuItem("List available points",   () -> listAvailablePoints()));
         menu.addMenuItem(new MenuItem("Buy points",              () -> buyPoints()));
-        menu.addMenuItem(new MenuItem("Add media",               () -> addMedia()));
+        menu.addMenuItem(new MenuItem("Add media\n",               () -> addMedia()));
 
         menu.addMenuItem(new MenuItem("List all students",       () -> listStudents()));
-        menu.addMenuItem(new MenuItem("Add a student",           () ->addStudent()));
+        menu.addMenuItem(new MenuItem("Add a student\n",           () ->addStudent()));
 
         
 
@@ -134,7 +134,13 @@ public class Main{
         Scanner in = new Scanner(System.in);
         while(running){
             System.out.println(menu.toString());
+            if(!output.equals("")){
+                System.out.println("--------------------------------\n");
+                System.out.println(output + "\n");
+                System.out.println("--------------------------------");
+            }
             System.out.println("Selection: ");
+            output = "";
             int selection = in.nextInt();
             if(selection >= 0 && selection <= 7){
                 menu.run(selection);
