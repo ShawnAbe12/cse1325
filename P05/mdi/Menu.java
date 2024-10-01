@@ -75,11 +75,11 @@ class Menu {
         // Website: https://www.asciiart.eu/computers/computers
         sb.append(" ___________________\r\n" + //
                         " | _______________ |\r\n" + //
-                        " | |XXXXXXXXXXXXX| |\r\n" + //
-                        " | |XXXXXXXXXXXXX| |\r\n" + //
+                        " | |             | |\r\n" + //
+                        " | |             | |\r\n" + //
                         " | |    MOES     | |\r\n" + //
-                        " | |XXXXXXXXXXXXX| |\r\n" + //
-                        " | |XXXXXXXXXXXXX| |\r\n" + //
+                        " | |V0.1.0  2024 | |\r\n" + //
+                        " | |Shawn Abraham| |\r\n" + //
                         " |_________________|\r\n" + //
                         "     _[_______]_\r\n" + //
                         " ___[___________]___\r\n" + //
