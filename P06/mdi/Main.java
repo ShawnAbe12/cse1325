@@ -33,7 +33,7 @@ public class Main{
             System.out.println("Student ID? ");
             int studentID = Integer.parseInt(in.nextLine());
     
-            in.nextLine();
+            // in.nextLine();
     
             System.out.println("Student email? ");
             String studentEmail = in.nextLine();
@@ -223,7 +223,7 @@ public class Main{
         menu.addMenuItem(new MenuItem("Add a student\n",                () ->addStudent()));
         
         menu.addMenuItem(new MenuItem("Discard Moes",                   () -> newMoes()));
-        menu.addMenuItem(new MenuItem("Save Data\n",                    () -> save()));
+        menu.addMenuItem(new MenuItem("Save Data",                    () -> save()));
         menu.addMenuItem(new MenuItem("Save Data as File Name",         () -> saveAs()));
         menu.addMenuItem(new MenuItem("Open File\n",                    () -> open()));
 
@@ -233,6 +233,13 @@ public class Main{
     }
     private void mdi() throws IOException{
         Scanner in = new Scanner(System.in);
+        System.out.println("File Name:  "+ fileName);
+        BufferedReader br = new BufferedReader(new FileReader(fileName));
+        if(magicCookie.equals(br.readLine()) && fileVersion.equals(br.readLine())){
+            moes = new Moes(br);
+        }
+        
+        br.close();
         while(running){
             System.out.println(menu.toString());
             if(!output.equals("")){
