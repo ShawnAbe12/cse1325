@@ -41,9 +41,15 @@ public class Media {
 
     public Media(BufferedReader br) throws IOException{
         String s;
-        while((s = br.readLine())!= null){
-            System.out.println(s);
-        }
+
+        s = br.readLine();
+        this.title = s;
+
+        s = br.readLine();
+        this.url = s;
+
+        int point= Integer.parseInt(br.readLine());
+        this.points = point;
     }
 
     public void save(BufferedWriter bw)throws IOException{

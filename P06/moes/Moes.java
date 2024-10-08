@@ -6,19 +6,53 @@ import customer.Student;
 import customer.Unlimited;
 import customer.Alacarte;
 
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 
 public class Moes{
     
-
+   
     // private ArrayList<String> elements = new ArrayList<String>();
 
     private ArrayList<Media> library = new ArrayList<Media>();
-    private ArrayList<Student> customers = new ArrayList<>();
+    private ArrayList<Student> customers = new ArrayList<Student>();
+    private int sizeOfLibrary;
+    private int sizeOfCustomers;
+
+    public Moes(){
+        this.sizeOfLibrary = 0;
+        this.sizeOfCustomers = 0;
+    }
+    public Moes(BufferedReader br) throws IOException{
+        sizeOfLibrary = Integer.parseInt(br.readLine());
+        for(int i =0; i< sizeOfLibrary; i++){
+            library.add(new Media(br));
+        }
+
+        sizeOfCustomers = Integer.parseInt(br.readLine());
+        for(int i =0; i< sizeOfCustomers; i++){
+            customers.add(new Student(br));
+        }
+    }
+
+    public void save(BufferedWriter bw) throws IOException{
+        bw.write("" + sizeOfLibrary + "\n");
+        for(Media i: library){
+            i.save(bw);
+        }
+
+        bw.write("" + sizeOfCustomers + "\n");
+        for(Student i: customers){
+            i.save(bw);
+        }
+    }
 
     public void addMedia(Media media){
         library.add(media);
+        sizeOfLibrary++;
     }
 
     public String getMediaList(){
@@ -33,6 +67,7 @@ public class Moes{
 
     public void addStudent(Student student){
         customers.add(student);
+        sizeOfCustomers++;
     }
 
     public String getStudentList(){

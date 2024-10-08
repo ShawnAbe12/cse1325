@@ -19,13 +19,13 @@ public abstract class Account {
     
     public Account(BufferedReader br) throws IOException{
         String s;
-        while((s = br.readLine())!= null){
-            System.out.println(s);
-        }
+        this.accountNumber = Integer.parseInt(br.readLine());
+        nextAccountNumber = Integer.parseInt(br.readLine());
     }
     public void save(BufferedWriter bw) throws IOException{
         bw.write("" + accountNumber + "\n");
         bw.write("" + nextAccountNumber +"\n");
+        bw.write("\n");
     }
 
     public int getAccountNumber(){

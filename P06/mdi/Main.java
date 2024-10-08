@@ -13,32 +13,37 @@ public class Main{
     private boolean running;
 
     private void addStudent(){
-        Scanner in = new Scanner(System.in);
-        System.out.println("Student Name? ");
-        String studentName = in.nextLine();
-
-        System.out.println("Student ID? ");
-        int studentID = in.nextInt();
-
-        in.nextLine();
-
-        System.out.println("Student email? ");
-        String studentEmail = in.nextLine();
-
-        System.out.println("(a)lacarte or (u)nlimited? ");
-        String studentType = in.nextLine();
-        boolean type = false;
-
-        switch(studentType){
-            case("a"):
-                type = false;
-                break;
-            case("u"):
-                type = true;
-                break;
+        try{
+            Scanner in = new Scanner(System.in);
+            System.out.println("Student Name? ");
+            String studentName = in.nextLine();
+    
+            System.out.println("Student ID? ");
+            int studentID = Integer.parseInt(in.nextLine());
+    
+            in.nextLine();
+    
+            System.out.println("Student email? ");
+            String studentEmail = in.nextLine();
+    
+            System.out.println("(a)lacarte or (u)nlimited? ");
+            String studentType = in.nextLine();
+            boolean type = false;
+    
+            switch(studentType){
+                case("a"):
+                    type = false;
+                    break;
+                case("u"):
+                    type = true;
+                    break;
+            }
+            Student student = new Student(studentName,studentID,studentEmail,type);
+            moes.addStudent(student);
+        }catch(Exception e){
+            System.err.println("Could not add Student");
         }
-        Student student = new Student(studentName,studentID,studentEmail,type);
-        moes.addStudent(student);
+        
     }
     private void listStudents(){
         output = moes.getStudentList();
@@ -46,18 +51,24 @@ public class Main{
 
 
     private void addMedia(){
-        Scanner in = new Scanner(System.in);
+        try{
+            Scanner in = new Scanner(System.in);
 
-        System.out.println("Title? ");
-        String mediaTitle = in.nextLine();
-
-        System.out.println("URL? ");
-        String mediaURL = in.nextLine();
-
-        System.out.println("Points? ");
-        int mediaPoints = in.nextInt();
-
-        moes.addMedia(new Media(mediaTitle, mediaURL, mediaPoints));
+            System.out.println("Title? ");
+            String mediaTitle = in.nextLine();
+    
+            System.out.println("URL? ");
+            String mediaURL = in.nextLine();
+    
+            System.out.println("Points? ");
+            int mediaPoints = Integer.parseInt(in.nextLine());
+    
+            moes.addMedia(new Media(mediaTitle, mediaURL, mediaPoints));
+        }catch(Exception e){
+            System.err.println("Could not add Media");
+        }
+        
+        
 
 
     }
