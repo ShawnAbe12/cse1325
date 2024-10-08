@@ -1,5 +1,10 @@
 package customer;
 
+
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.IOException;
+
 import product.Media;
 
 public abstract class Account {
@@ -11,6 +16,18 @@ public abstract class Account {
         nextAccountNumber++;
 
     }
+    
+    public Account(BufferedReader br) throws IOException{
+        String s;
+        while((s = br.readLine())!= null){
+            System.out.println(s);
+        }
+    }
+    public void save(BufferedWriter bw) throws IOException{
+        bw.write("" + accountNumber + "\n");
+        bw.write("" + nextAccountNumber +"\n");
+    }
+
     public int getAccountNumber(){
         return accountNumber;
     }
