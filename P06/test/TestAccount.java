@@ -10,7 +10,7 @@ import customer.Alacarte;
 import customer.Unlimited;
 
 public class TestAccount{
-    private static String fileName = "C:\\Users\\johna\\cse1325\\P06\\saveFiles\\account.txt"; 
+    private static String fileName = "account.txt"; 
     public static void main(String[] args) throws IOException{
         Unlimited acc1 = new Unlimited();
         Alacarte acc2 = new Alacarte();

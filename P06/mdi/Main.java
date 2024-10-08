@@ -4,9 +4,21 @@ import moes.Moes;
 import product.Media;
 import customer.Student;
 
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.Scanner;
 
 public class Main{
+    private static final String extension = ".txt";
+    private static final String magicCookie = "saveFiles";
+    private static final String fileVersion = "1.0";
+    private String fileName;
+    
+    
+
     private Moes moes = new Moes();
     private String output;
     private Menu menu = new Menu();
@@ -45,6 +57,77 @@ public class Main{
         }
         
     }
+
+    private void newMoes(){
+        moes = new Moes();
+    }
+
+    private void save(){
+        try(BufferedWriter bw = new BufferedWriter(new FileWriter(fileName))){
+            bw.write("" + magicCookie + "\n");
+            bw.write("" + fileVersion + "\n" );
+            moes.save(bw);
+
+        }catch(Exception e){
+            System.err.println("Could not save "+ e.getMessage());
+            return;
+        }
+    } 
+    private void saveAs(){
+        System.out.println("The current file name is " + fileName+ "\n Please enter a new file name");
+        Scanner in = new Scanner(System.in);
+
+        String input = in.nextLine();
+        if(input == null){
+            return;
+        }
+
+        if(!input.endsWith(extension)){
+            input+=extension;
+        }
+        fileName = input;
+
+        this.save();
+
+    }
+
+    private void open(){
+        System.out.println("The current file name is " + fileName+ "\n Please enter a new file name");
+        Scanner in = new Scanner(System.in);
+
+        String newFileName = in.nextLine();
+        if(newFileName == null){
+            return;
+        }
+        if(!newFileName.endsWith(extension)){
+            newFileName+=extension;
+        }
+
+        try(BufferedReader br = new BufferedReader(new FileReader(newFileName))){
+            if(magicCookie.equals(br.readLine()) && fileVersion.equals(br.readLine())){
+                try{
+                    Moes moes2 = new Moes(br);
+                    moes = moes2;
+                    fileName = newFileName;
+
+                }catch(Exception e){
+                    System.err.println("Could not create new Moes " + e.getMessage());
+                }
+            }
+            else{
+                throw new IOException("Incorrect magic Cookie or file Version");
+            }
+        }catch(Exception e){
+            System.err.println("Can't be opened " + e.getMessage());
+            return;
+        }
+
+
+
+
+
+    }
+
     private void listStudents(){
         output = moes.getStudentList();
     }
@@ -124,24 +207,31 @@ public class Main{
 
     public Main(){
 
+        fileName = "test.txt";
         output = "";
         running = true;
 
-        menu.addMenuItem(new MenuItem("Exit\n",                    () -> endApp()));
+        menu.addMenuItem(new MenuItem("Exit\n",                         () -> endApp()));
 
-        menu.addMenuItem(new MenuItem("Play media",              () -> playMedia()));
-        menu.addMenuItem(new MenuItem("List media",              () -> listMedia()));
-        menu.addMenuItem(new MenuItem("List available points",   () -> listAvailablePoints()));
-        menu.addMenuItem(new MenuItem("Buy points",              () -> buyPoints()));
-        menu.addMenuItem(new MenuItem("Add media\n",               () -> addMedia()));
+        menu.addMenuItem(new MenuItem("Play media",                     () -> playMedia()));
+        menu.addMenuItem(new MenuItem("List media",                     () -> listMedia()));
+        menu.addMenuItem(new MenuItem("List available points",          () -> listAvailablePoints()));
+        menu.addMenuItem(new MenuItem("Buy points",                     () -> buyPoints()));
+        menu.addMenuItem(new MenuItem("Add media\n",                    () -> addMedia()));
 
-        menu.addMenuItem(new MenuItem("List all students",       () -> listStudents()));
-        menu.addMenuItem(new MenuItem("Add a student\n",           () ->addStudent()));
+        menu.addMenuItem(new MenuItem("List all students",              () -> listStudents()));
+        menu.addMenuItem(new MenuItem("Add a student\n",                () ->addStudent()));
+        
+        menu.addMenuItem(new MenuItem("Discard Moes",                   () -> newMoes()));
+        menu.addMenuItem(new MenuItem("Save Data\n",                    () -> save()));
+        menu.addMenuItem(new MenuItem("Save Data as File Name",         () -> saveAs()));
+        menu.addMenuItem(new MenuItem("Open File\n",                    () -> open()));
+
 
         
 
     }
-    private void mdi(){
+    private void mdi() throws IOException{
         Scanner in = new Scanner(System.in);
         while(running){
             System.out.println(menu.toString());
@@ -153,7 +243,7 @@ public class Main{
             System.out.println("Selection: ");
             output = "";
             int selection = in.nextInt();
-            if(selection >= 0 && selection <= 7){
+            if(selection >= 0 && selection <= 11){
                 menu.run(selection);
             }
             else{
@@ -166,7 +256,7 @@ public class Main{
         running = false;
     }
 
-    public static void main(String[] args){
+    public static void main(String[] args) throws IOException{
         Main main = new Main();
         main.mdi();
     }

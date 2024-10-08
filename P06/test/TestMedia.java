@@ -9,7 +9,7 @@ import java.io.IOException;
 import product.Media;
 
 public class TestMedia{
-    private static String fileName = "C:\\Users\\johna\\cse1325\\P06\\saveFiles\\media.txt";
+    private static String fileName = "media.txt";
     public static void main(String[] args) throws IOException{
         String title = "The Little Shop of Horrors";
         String url = "https://publicdomainmovie.net/movie/the-little-shop-of-horrors-0";
