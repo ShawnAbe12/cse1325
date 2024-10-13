@@ -7,7 +7,6 @@ public class TestMedia{
         String[] arr1 = {"https://youtube.com","file://media/lib/garp.mp4"};
         String[] arr2 = {"hello.world", "htt://badurl.com", "flub://badurl.com"};
 
-        // media.isValidURL(arr1[0]);
 
         if(media.toString().startsWith("\""+title) != true || media.toString().endsWith("("+url+")\"") != true){
             System.out.println("FAIL");

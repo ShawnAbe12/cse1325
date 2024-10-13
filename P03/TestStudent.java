@@ -16,12 +16,12 @@ public class TestStudent{
 
         String correctMediaString = "Playing " + media.toString();
         
-        Student stu = new Student(name, id, email);
+        Student stu = null;
         
         
         // Student stu = new Student(name, id, email);
         try {
-            Student stu1 = new Student(name, id, email + "23");
+             stu = new Student(name, id, email);
         } 
         catch (Exception e) {
             if(!e.getMessage().equals(correctExpression)){
@@ -30,6 +30,7 @@ public class TestStudent{
                 System.out.println("Expected Outcome: \n"+correctExpression +"\n" + "Actual Outcome: \n" +e.getMessage());
             }
         }
+        // stu = new Student(name, id, email);
         int nextAccountNumber = new Account().getAccountNumber()-1;
         String correctString = "\""+name + " ("+id+","+email+",Account Number #"+nextAccountNumber+")\"";
 

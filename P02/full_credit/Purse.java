@@ -1,7 +1,4 @@
 // import java.util.Scanner;
-
-import javax.swing.DebugGraphics;
-
 public class Purse { 
       public static void main(String[] args) { 
       double totalSaved = 0;
@@ -16,7 +13,7 @@ public class Purse {
         coinArray[count] = new Coin(denom, yearArray[count]);
         count++;
       }
-      
+
       int minYear = coinArray[0].getYear();
       int maxYear = coinArray[0].getYear();
       for(Coin coin:coinArray){

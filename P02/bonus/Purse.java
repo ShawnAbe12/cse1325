@@ -2,6 +2,7 @@
 public class Purse { 
       public static void main(String[] args) { 
       double totalSaved = 0;
+      // System.out.println(""+Denomination.PENNY);
       // Scanner scanner = new Scanner();
 
       Denomination[] denominationsArray = {Denomination.PENNY,Denomination.NICKEL,Denomination.DIME,Denomination.QUARTER,Denomination.QUARTER};

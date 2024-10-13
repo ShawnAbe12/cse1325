@@ -5,6 +5,7 @@ public class Purse {
       double totalSaved = 0;
       double weightGrams = 0;
       // Scanner scanner = new Scanner();
+      System.out.println("" +Denomination.PENNY);
 
       Denomination[] denominationsArray = {Denomination.PENNY,Denomination.NICKEL,Denomination.DIME,Denomination.QUARTER,Denomination.PENNY};
       Coin[] coinArray = new Coin[5];
