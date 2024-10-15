@@ -40,13 +40,11 @@ public class Boggle implements Runnable{
     private static int numThreads = 1;     // default is to use a single thread
     private static String filename = "words.txt"; // default (this is the supplied file of 971 common words)
     private static int verbosity = 0;   // smaller ints mean less output - us 0 for timing
-    private static int countThread = 0;
     
     // =========== WRITE AND INVOKE THIS METHOD FOR EACH THREAD ===========
     private static void solveRange(int first, int lastPlusOne, int threadNumber) {
         Board board;
-        first = lastPlusOne * countThread;
-        for(int i = first; i< lastPlusOne-1; i++){
+        for(int i = first; i< lastPlusOne; i++){
             synchronized(lock){
                 board = boards.get(i);
             }
@@ -58,13 +56,10 @@ public class Boggle implements Runnable{
                         solutions.add(solution);
                         log("ye",1);
                     }
-                    
-
                 }
 
             }
         }
-        countThread++;
         // int threadNumber = 0; // This will be set to a unique int for each of your threads
         //     for(Board board : boards) {
         //         Solver solver = new Solver(board, threadNumber, verbosity);
@@ -78,7 +73,6 @@ public class Boggle implements Runnable{
 
 
     public static void main(String[] args) {
-        Thread[] threads = new Thread[numThreads];
         try {
             // Offer standard help
             if(args.length > 0 && args[0].equals("-h")) {
@@ -102,7 +96,8 @@ public class Boggle implements Runnable{
                     System.err.println("Invalid command line arguments: " + e);
                     System.exit(-2);
             }
-    
+            Thread[] threads = new Thread[numThreads];
+
             // Generate random Boggle boards on which to search
             try {
                 for(int i=0; i<numberOfBoards; ++i) {
@@ -126,14 +121,19 @@ public class Boggle implements Runnable{
             
             // =========== CHANGE THIS BLOCK OF CODE TO ADD THREADING ===========
             double numBoardsPerThread = ((double)numberOfBoards)/((double)numThreads);
-            for(int i =0; i< numThreads-1; i++){
-                final int min = 0;
-                final int max = (int)numBoardsPerThread +1;
-                final int counter = numThreads;
-
-                threads[i] = new Thread(() ->solveRange(min, max, counter));
-                // solveRange(min, max, i);
+            for(int i =0; i< numThreads; ++i){
+                final int min = (int)numBoardsPerThread * i;
+                final int max = min + (int)numBoardsPerThread;
+                final int count = i; 
+                // solveRange(min, max, count);
+                threads[i] = new Thread(() -> solveRange(min, max, count));
+                threads[i].start();
             }
+            for(Thread t : threads){
+            try {t.join();}
+            catch (InterruptedException e) {} // Remember the unchecked exception!
+            }
+
             // solveRange(0, numberOfBoards, numThreads);
             // =========== END BLOCK OF CODE TO ADD THREADING ===========
 
