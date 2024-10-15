@@ -14,6 +14,15 @@ QUESTION 1: What Boggle command line arguments ([#boards] and if not default [bo
 
 
 
+time java Boggle 200
+
+Found 73883 solutions
+Hash is 0x1BAA829A
+
+real    0m36.418s
+user    0m0.000s
+sys     0m0.015s
+
 
 
 
@@ -21,10 +30,20 @@ QUESTION 2: Provide the full output (including the time command) for your progra
 
 for i in {1..16} ; do echo ; echo $i Threads; time java Boggle 90 - $i ; done
 
+time java Boggle 200 - $i
+
+Found 73883 solutions
+Hash is 0x1BAA829A
+
+real    0m35.028s
+user    0m0.000s
+sys     0m0.000s
 
 
 
 QUESTION 3: Does adding more threads continue to speed up the program? Do more threads ever slow down the program slightly?  Why or why not?
+
+Yes to a certain point. At a certain point if the number of threads exceeds the maximum number of threads then the program slows down because of the waiting time for threads to finsh and join because a thread number larger than the max num of threads has to wait for the thread in front of it to finish before it can start.
 
 
 
