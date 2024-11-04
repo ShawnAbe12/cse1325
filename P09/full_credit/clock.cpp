@@ -1,17 +1,18 @@
 #include <iostream>
 #include <iomanip>
+#include "clock.h"
 
 
-class Clock{
-    public:
-        Clock(int hours, int minutes, int seconds)
+
+
+        Clock::Clock(int hours, int minutes, int seconds)
             : _hours{hours}, _minutes{minutes}, _seconds{seconds} {
             if (hours < 0 || hours > 23) throw std::out_of_range{"Invalid Hours Input"};
             if (minutes < 0|| minutes > 59) throw std::out_of_range{"Invalid Minutes Input"};
             if (seconds < 0 || seconds > 59) throw std::out_of_range{"Invalid Seconds Input"};
             }
-        virtual ~ Clock(){} 
-        void tic(){
+        // virtual ~ Clock(){} 
+        void Clock::tic(){
             _seconds++;
             if (_seconds >=60){
                 _minutes++;
@@ -25,14 +26,10 @@ class Clock{
                 _hours = 0;
             }
         }
-        void print(){
+        void Clock::print(){
             std::cout << "The time is now: ";
-            std::cout << std::setw(2) << std::setfill('0') << _hours <<":"<< std::setw(2) << std::setfill('0') << _minutes <<":"<< std::setw(2) << std::setfill('0') << _seconds;
+            std::cout << std::setw(2) << std::setfill('0') << _hours <<":"<< std::setw(2) << std::setfill('0') << _minutes <<":"<< std::setw(2) << std::setfill('0') << _seconds <<" ";
         }
     
-     
-
-    protected:
         int _hours, _minutes, _seconds;
-};
 
