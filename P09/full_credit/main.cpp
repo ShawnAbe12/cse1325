@@ -11,24 +11,33 @@ int main(int argc, char *argv[]){
     }
 
     std::cout<< "\nEnter \'q\' to exit\n" << std::endl;
-    int hours = std::stoi(argv[1]);
-    int minutes = std::stoi(argv[2]);
-    int seconds= std::stoi(argv[3]);
+    
+    try
+    {
+        int hours = std::stoi(argv[1]);
+        int minutes = std::stoi(argv[2]);
+        int seconds= std::stoi(argv[3]);
 
-    Clock c(hours,minutes,seconds);
-    c.print();
-    // c.tic();
-
-    while(is_on){
-        std::string input;
-        std::getline(std::cin, input);
-        if(input.compare("q") == 0){
-            is_on = false;
-            break;
-        }
-        c.tic();
+        Clock c(hours,minutes,seconds);
         c.print();
+
+        while(is_on){
+            std::string input;
+            std::getline(std::cin, input);
+            if(input.compare("q") == 0){
+                is_on = false;
+                break;
+            }
+            c.tic();
+            c.print();
+        }
     }
+    catch(const std::exception& e)
+    {
+        std::cerr << e.what() << "\n";
+        exit(-2);
+    }
+    
     
     return 0;
     
