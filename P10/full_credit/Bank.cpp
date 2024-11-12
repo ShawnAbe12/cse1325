@@ -41,7 +41,15 @@ int main(){
         std::cout << "\t" <<name << " with " << purse << std::endl;
     }
 
-    std::cout << "Total in bank " <<total << std::endl;
+    std::cout << "\nTotal in bank " <<total << std::endl;
+
+
+    //Checking Subtraction
+    // Purse p{2,0,0};
+    // Purse c{0,11,11};
+    // std::cout<< p - c << std::endl;
+    // std::cout<< p -= c << std::endl;
+
 
 
     //Checking comparison Operations

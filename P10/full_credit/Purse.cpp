@@ -41,9 +41,35 @@
         Purse Purse::operator-(const Purse& purse){
             // add the carry over stuff
             Purse p;
+
+            while(this->_pence - purse._pence < 0){
+                    if(this->_shillings > 0){
+                        this->_shillings--;
+                    }
+                    else{
+                        if(this->_pound > 0){
+                            this->_pound--;
+                            this->_shillings +=19;
+                        }
+                    }
+                    this->_pence += 12;
+            }
+            
+            while(this->_shillings - purse._shillings < 0){
+                    if(this->_pound > 0){
+                        this->_pound--;
+                    }
+                    else{
+                        std::cout<< "Can't subtract these numbers because it results in negative numbers" << std::endl;
+                        return p;
+                    }
+                    
+                    this->_shillings += 20;
+            }
+
+            p._pence = this->_pence - purse._pence;
             p._pound = this->_pound - purse._pound;
             p._shillings =this->_shillings - purse._shillings;
-            p._pence = this->_pence - purse._pence;
             return p;
         }
         Purse Purse::operator+=(const Purse& purse){
@@ -55,6 +81,30 @@
         }
         Purse Purse::operator-=(const Purse& purse){
             // add all the carry over stuff
+            while(this->_pence - purse._pence < 0){
+                    if(this->_shillings > 0){
+                        this->_shillings--;
+                    }
+                    else{
+                        if(this->_pound > 0){
+                            this->_pound--;
+                            this->_shillings +=19;
+                        }
+                    }
+                    this->_pence += 12;
+            }
+            
+            while(this->_shillings - purse._shillings < 0){
+                    if(this->_pound > 0){
+                        this->_pound--;
+                    }
+                    else{
+                        std::cout<< "Can't subtract these numbers because it results in negative numbers" << std::endl;
+                        return *this;
+                    }
+                    
+                    this->_shillings += 20;
+            }
             this->_pound -= purse._pound;
             this->_shillings -= purse._shillings;
             this->_pence -= purse._pence;
