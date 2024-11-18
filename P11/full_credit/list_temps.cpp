@@ -73,16 +73,21 @@ int main(int argc, char *argv[]){
         Date begining(startYear, startMonth, startDay);
         Date end(endYear, endMonth, endDay);
 
+        for (auto it = temps.begin(); it != temps.end(); it++) {
+            const Date& date = it->first;
+            const Temp& temperature = it->second;
+
+            if (date >= begining && date <= end) {
+                cout << date << "   " << temperature << endl;
+            }
+        }
+
        
     }
 
 
 
-    // Date s(2020,5,3);
-    // cout << temps[s] << endl;
 
-
-    //USE STRING STREAM TO USE FILE INPUT
     
 
 }
