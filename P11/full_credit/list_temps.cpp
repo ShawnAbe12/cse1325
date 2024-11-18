@@ -1,5 +1,6 @@
 #include <iostream>
 #include "Date.h"
+#include <iomanip>
 #include <map>
 #include <fstream>
 
@@ -74,11 +75,12 @@ int main(int argc, char *argv[]){
         Date end(endYear, endMonth, endDay);
 
         for (auto it = temps.begin(); it != temps.end(); it++) {
+            
             const Date& date = it->first;
             const Temp& temperature = it->second;
 
             if (date >= begining && date <= end) {
-                cout << date << "   " << temperature << endl;
+                cout << date << "   " <<fixed << setprecision(1) << setfill('0') << right << temperature << endl;
             }
         }
 
