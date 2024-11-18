@@ -11,15 +11,21 @@ int main(int argc, char *argv[]){
     Temp t;
     ifstream infile;
     string line, substring;
-    std::map<Date, Temp> temps = {};
+    std::map<Date, Temp> temps;
     int date[3];
     int location, counter = 0;
+
+    // Date d{1970, 20, 20};
+    // Date p{1970, 21, 22};
+    // t = 69.1;
+    // temps[p] =t; 
+    // cout<<temps[p]<< endl;
 
 
     if (argc != 2) {
         cerr << "Usage: <progam name> <data file>\n";
         return -1;
-    }
+    } 
 
     infile.open(argv[1]);
     if(infile.fail()){
@@ -30,14 +36,14 @@ int main(int argc, char *argv[]){
             {
                 if(counter != 3){
                     int x = stoi(line);
-                    std::cout << x <<  std::endl;
+                    // std::cout << x <<  std::endl;
                     date[counter] = x;
                     counter++;
                 }else{
                     counter= 0;
                     t = stod(line);
-                    std::cout << t << std::endl;
-                    Date d(date[0],date[1],date[2]);
+                    
+                    Date d(date[2],date[1],date[0]);
 
                     temps[d] = t;
 
@@ -45,14 +51,35 @@ int main(int argc, char *argv[]){
                 
 
             }
-            catch(const std::exception& e)
-            {
-                // std::cerr << e.what() << '\n';
-            }        
+            catch(const exception& e){}      
         }
 
     }
     infile.close();
+
+    while (true) {
+        cout << "Enter start date (YYYY MM DD): ";
+        int startYear, startMonth, startDay;
+        if (!(cin >> startYear >> startMonth >> startDay)) {
+            break;
+        }
+
+        cout << "Enter end date (YYYY MM DD): ";
+        int endYear, endMonth, endDay;
+        if (!(cin >> endYear >> endMonth >> endDay)) {
+            break;
+        }
+
+        Date begining(startYear, startMonth, startDay);
+        Date end(endYear, endMonth, endDay);
+
+       
+    }
+
+
+
+    // Date s(2020,5,3);
+    // cout << temps[s] << endl;
 
 
     //USE STRING STREAM TO USE FILE INPUT
